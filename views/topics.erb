@@ -1,8 +1,7 @@
 
-
+<div class="topics">
 <h1> Flames in the WarChest:</h1>
-
-<ul class = "topic_list">
+<ul>
   <% @topics.each do |topic|%>
     <div class="topic_list">
       <li>
@@ -25,8 +24,8 @@
           <%=topic.topic_title%>
         </a>
 
-        <div class='topic_list_details'>
-          <%=topic.creator%>
+        <div class='topic_creator'>
+          <p><%=topic.creator%></p>
         </div>
 
         <div class='comment_counters'>
@@ -37,6 +36,7 @@
     </div>
   <% end %>
 </ul>
+</div>
 
 
 <form method="post" action="/topics">

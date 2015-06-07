@@ -51,7 +51,7 @@ module App
     # =====Routes==========================================
       # -- test --
         get('/test') do
-          
+          binding.pry
           erb :test
         end
 

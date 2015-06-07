@@ -20,10 +20,15 @@
 <h2>Contribute to the Conversation, below</h2>
 
 <form method="post" action="/comments">
-  <input type= 'text' name= 'comment_content' placeholder= 'Comment Here...'>
+  <input class='inputBox' type= 'text' name= 'comment_content' placeholder= 'Comment Here...'>
   <input type= 'hidden' name='parent_topic_id' value='<%=@topic.id%>'>
   <input type= 'submit' value= 'Fire Back'>
 </form>
+
+<fieldset>
+    <legend>Comment Preview</legend>
+      <input class= 'outputBox'>
+</fieldset>
 
 <ul>
   <%@topic_comments.each do |comment|%>
@@ -38,3 +43,18 @@
     </li>
   <%end%>  
 </ul>
+
+<script src="/scripts/main.js"></script>
+<%markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)%>
+<script>
+var translate = function(){
+    var inputBox = document.querySelector(".inputBox");
+    var outputBox = document.querySelector(".outputBox");
+    var inputString = inputBox.value;
+    var outputString = (</script>
+      <%markdown.render('%><script> + inputString +</script><%')%><script>);
+    outputBox.setAttribute("value", outputString);
+}
+
+document.addEventListener("keyup", translate);
+</script>

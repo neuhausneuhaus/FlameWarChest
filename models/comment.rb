@@ -3,7 +3,7 @@ require_relative "user"
 require_relative "topic"
 
 class Comment
-    
+
     def initialize(params={})
         @id = params["id"]
         @parent_topic_id = params["parent_topic_id"]
@@ -17,11 +17,12 @@ class Comment
     attr_accessor :parent_topic_id, :comment_creator_id, :comment_content, :comment_created_date, :comment_karma
 
     def self.create (attrs, c_user)
-        
+        markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)
+        comment_content = markdown.render(attrs[:comment_content])
         result = $db.exec_params(
             "INSERT INTO comments (parent_topic_id, comment_creator_id, comment_content, comment_created_date)
             VALUES($1,$2,$3,CURRENT_TIMESTAMP) RETURNING *",
-            [attrs[:parent_topic_id], c_user.id, attrs[:comment_content]]).first
+            [attrs[:parent_topic_id], c_user.id, comment_content]).first
         Topic.new(result)
     end
 

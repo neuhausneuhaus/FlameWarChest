@@ -1,28 +1,40 @@
 body{
   font-family: helvetica;
+  max-width: 800px;
 }
+/*---Header---*/
+#headerImg{
+float: right; position: fixed; right: 5px; top:10px;}
 
-.comment{
-  color: darkred;
+#headerText{
+float: right; position: fixed; right: 11px; top:205px;}
+
+#headerSubText{
+float: right; position: fixed; right: 11px; top:245px;}
+
+/*---Login---*/
+.loginArea{ 
+  float:left; position:fixed; top:375px; left:25px;}
+.loginField{ 
+  margin-top: 5px;}
+#loginButton{ 
+  margin-top:20px; margin-left: 88px; width: 50px; background-color: grey;}
+
+/*---Footer---*/
+footer{
+   position:absolute; text-align: center; bottom:0; width:100%;   height:60px;}
+#footSig{
+  margin-left: 40px; text-align: center;}
+
+/*---Topic_Page---*/
+.topics{
+  max-width: 60%;
+  margin-top: 150px;
+  display: block;
+  text-align: left;
 }
-
-.commentor{
-  color: darkorange;
-}
-
-.comment_counters{
-  opacity: .5;
-  font-style: italic;
-  
-}
-
 .topic_list{
-  clear:both;
   list-style: none;
-}
-.topic_list_details{
-  float:left;
-  padding-left: 3em;
 }
 .voting_button{
   padding-top: 0px; 
@@ -34,11 +46,31 @@ body{
   height: 10px;
   float:left;
 }
-
-.upvote_form{
-  float:left;
-}
-
 .topic_karma_score{
   float:left;
+  margin-top: 0px;
 }
+.topic_links{
+clear:both;
+}
+.topic_creator{
+  /*float:left;*/
+  /*padding-left: 3em;*/
+}
+
+.comment_counters{
+  opacity: .5;
+  font-style: italic;
+
+}
+
+/*---Convo_Page---*/
+
+.comment{
+  color: darkred;
+}
+
+.commentor{
+  color: darkorange;
+}
+

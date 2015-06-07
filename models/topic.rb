@@ -4,6 +4,7 @@ require_relative "comment"
 
 class Topic
     
+
     def initialize(params={})
         @id = params["id"]
         @topic_creator_id = params["topic_creator_id"]
@@ -39,10 +40,13 @@ class Topic
     end
 
     def self.create (attrs, c_user)
+        markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)
+        topic_title = markdown.render(attrs[:topic_title])
+        topic_subtitle = markdown.render(attrs[:topic_subtitle])
         result = $db.exec_params(
             "INSERT INTO topics (topic_title, topic_subtitle, topic_created_date, topic_creator_id)
             VALUES($1,$2,CURRENT_TIMESTAMP,$3) RETURNING *",
-            [attrs[:topic_title], attrs[:topic_subtitle], c_user.id]).first
+            [topic_title, topic_subtitle, c_user.id]).first
         Topic.new(result)
     end
 
