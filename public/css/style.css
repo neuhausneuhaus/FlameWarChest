@@ -1,0 +1,44 @@
+body{
+  font-family: helvetica;
+}
+
+.comment{
+  color: darkred;
+}
+
+.commentor{
+  color: darkorange;
+}
+
+.comment_counters{
+  opacity: .5;
+  font-style: italic;
+  
+}
+
+.topic_list{
+  clear:both;
+  list-style: none;
+}
+.topic_list_details{
+  float:left;
+  padding-left: 3em;
+}
+.voting_button{
+  padding-top: 0px; 
+  padding-bottom: 0px;
+  padding-right: 8px;
+  padding-left: 6px;
+  font-weight: bold; 
+  text-align: center;
+  height: 10px;
+  float:left;
+}
+
+.upvote_form{
+  float:left;
+}
+
+.topic_karma_score{
+  float:left;
+}

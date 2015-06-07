@@ -1,0 +1,7 @@
+<h1>Current Flamers in the WarChest</h1>
+
+<ul>
+  <% @users.each do |user| %>
+  <li><%="#{user["fname"]} #{user["lname"]}, AKA #{user["handle"]}."%></li>
+  <%end%>
+</ul>

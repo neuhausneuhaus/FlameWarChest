@@ -1,0 +1,40 @@
+
+
+<h1 class="topic_title">
+  <%=@topic.topic_title%>
+</h1>
+
+<h2 class="topic_subtitle">
+  <%=@topic.topic_subtitle%>
+</h2>
+
+<p class="topic_creator_info">
+  Flame started by: <%=
+  "#{@topic_creator.handle} on #{@topic.clean_timestamp}"
+  %>
+</p>
+
+<br><br>
+
+
+<h2>Contribute to the Conversation, below</h2>
+
+<form method="post" action="/comments">
+  <input type= 'text' name= 'comment_content' placeholder= 'Comment Here...'>
+  <input type= 'hidden' name='parent_topic_id' value='<%=@topic.id%>'>
+  <input type= 'submit' value= 'Fire Back'>
+</form>
+
+<ul>
+  <%@topic_comments.each do |comment|%>
+    <li>
+      <div class="comment">
+        <%= comment.comment_content%>
+      </div>
+    <%user =  User.find_by_id(comment.comment_creator_id)%>
+      <div class="commentor">
+        <%=user.handle%>
+      </div>
+    </li>
+  <%end%>  
+</ul>
