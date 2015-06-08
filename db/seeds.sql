@@ -30,7 +30,7 @@ VALUES
   'and I wish you would be more sympathetic about it.',
   '2015-06-3 13:26:18'),
   (2,
-  'I making this thing called FlameWarChest',
+  'Im making this thing called FlameWarChest',
   'What do you guys think of it? (be nice)',
   '2015-06-04 03:11:12');
 

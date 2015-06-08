@@ -4,13 +4,13 @@ body{
 }
 /*---Header---*/
 #headerImg{
-float: right; position: fixed; right: 5px; top:10px;}
+float: right; position: fixed; right: 5px; top:10px; width:85px;}
 
 #headerText{
-float: right; position: fixed; right: 11px; top:205px;}
+float: right; position: fixed; right: 11px; top:85px;}
 
 #headerSubText{
-float: right; position: fixed; right: 11px; top:245px;}
+float: right; position: fixed; right: 11px; top:120px;}
 
 /*---Login---*/
 .loginArea{ 
@@ -49,19 +49,40 @@ footer{
 .topic_karma_score{
   float:left;
   margin-top: 0px;
+  padding: 2px;
 }
 .topic_links{
 clear:both;
 }
 .topic_creator{
-  /*float:left;*/
-  /*padding-left: 3em;*/
+  float:left;
+  padding-left: 30px;
+  left:0px;
 }
 
 .comment_counters{
   opacity: .5;
   font-style: italic;
+  float: left;
+}
 
+.buttons_and_title{
+  clear:both;
+}
+
+.topic_form {
+  top: 190px;
+  right: 0;
+  position: absolute;
+}
+
+.topic_form input {
+  clear: both;
+  float: left;
+  margin-bottom: 5px;
+}
+.topic_links p {
+  display: inline;
 }
 
 /*---Convo_Page---*/

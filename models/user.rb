@@ -28,4 +28,9 @@ class User
         end
     end
 
+    def list_topics
+        id = self.id
+        result = $db.exec_params("SELECT * FROM topics WHERE topic_creator_id=$1", [id])
+    end
+
 end

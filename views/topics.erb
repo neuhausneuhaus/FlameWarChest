@@ -1,52 +1,53 @@
-
 <div class="topics">
 <h1> Flames in the WarChest:</h1>
-<ul>
+<ul class="topic_list">
   <% @topics.each do |topic|%>
     <div class="topic_list">
       <li>
+        <!-- wrap the vote buttons and title in a div-->
+        <div class="buttons_and_title">
+          <div>
+            <form class="upvote_form" method="post" action="/upvote/<%= topic.id%>">
+              <input class='voting_button' type="submit" value="↑">
+            </form>
 
-        <div>
-          <form class="upvote_form" method="post" action="/upvote/<%= topic.id%>">
-            <input class='voting_button' type="submit" value="↑">
-          </form>
+            <p class="topic_karma_score">
+              <%=topic.karma_check.to_s%>
+            </p>
 
-          <p class="topic_karma_score">
-            <%=topic.karma_check.to_s%>
-          </p>
+            <form  class="downvote_form" method="post" action="/downvote/<%= topic.id%>">
+              <input class='voting_button' type="submit" value="↓">
+            </form>
+          </div>
 
-          <form  class="downvote_form" method="post" action="/downvote/<%= topic.id%>">
-            <input class='voting_button' type="submit" value="↓">
-          </form>
+          <a class="topic_links" href="/topics/<%= topic.id%>">
+            <%=topic.topic_title%>
+          </a>
         </div>
+        <div class="topic_creator_and_comments">
+          <div class='topic_creator'>
+            <p><%=topic.creator%></p>
+          </div>
 
-        <a class="topic_links" href="/topics/<%= topic.id%>">
-          <%=topic.topic_title%>
-        </a>
-
-        <div class='topic_creator'>
-          <p><%=topic.creator%></p>
+          <div class='comment_counters'>
+            <p><%=topic.comment_count%> comments</p>
+          </div><br>
         </div>
-
-        <div class='comment_counters'>
-          &nbsp<%=topic.comment_count%> comments
-        </div><br>
-
       </li>
     </div>
   <% end %>
 </ul>
 </div>
 
+<div class="topic_form">
+  <form method="post" action="/topics">
+    <fieldset>
+      <legend>Create New Topic</legend>
+        <input type= 'text' name= 'topic_title' placeholder= 'Title of your flame'>
+        <input type= 'text' name= 'topic_subtitle' placeholder= 'Subtitle of your flame'>
+        <input type= 'submit' value= 'Post New Topic'>
+    </fieldset>
+  </form>
+</div>
 
-<form method="post" action="/topics">
-  <fieldset>
-    <legend>Create New Topic</legend>
-      <input type= 'text' name= 'topic_title' placeholder= 'Title of your flame'>
-      <input type= 'text' name= 'topic_subtitle' placeholder= 'Subtitle of your flame'>
-      <input type= 'submit' value= 'Post New Topic'>
-  </fieldset>
-</form>
-
-<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 <script src="../scripts/main.js"></script>
