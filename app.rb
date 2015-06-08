@@ -10,7 +10,7 @@ module App
   class Server < Sinatra::Base
     markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)
     # =====Setup==========================================
-    enable :sessions #keeps state during requests.   !!!?Same as 'set :sessions, true'
+    enable :sessions #keeps state during requests.   
     enable :method_override #_method to put/delete forms in browsers that don't support it.
     configure :development do
       register Sinatra::Reloader
@@ -74,7 +74,7 @@ module App
             session[:current_user]=@user.id
             redirect '/topics'
           else
-            @message = "gofuckyourself"
+            @message = "Incorrect User Name or Password "
             erb :login
           end 
         end
